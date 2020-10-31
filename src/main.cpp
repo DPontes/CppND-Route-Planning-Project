@@ -60,15 +60,15 @@ int main(int argc, const char **argv)
     float end_x = 0.0;
     float end_y = 0.0;
 
-    cout << "Plese enter the start and end coordinates for your path." << endl;
-    cout << "Start X value: ";
-    cin >> start_x;
-    cout << "Start Y value: ";
-    cin >> start_y;
-    cout << "End X value: ";
-    cin >> end_x;
-    cout << "End Y value: ";
-    cin >> end_y;
+    std::cout << "Plese enter the start and end coordinates for your path." << std::endl;
+    std::cout << "Start X value: ";
+    std::cin >> start_x;
+    std::cout << "Start Y value: ";
+    std::cin >> start_y;
+    std::cout << "End X value: ";
+    std::cin >> end_x;
+    std::cout << "End Y value: ";
+    std::cin >> end_y;
 
     // Build Model.
     RouteModel model{osm_data};
