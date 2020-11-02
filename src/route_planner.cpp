@@ -63,6 +63,12 @@ RouteModel::Node *RoutePlanner::NextNode() {
         return  (list_1->h_value + list_1->g_value) <
                 (list_2->h_value + list_2->g_value);
     });
+
+    open_list.erase(open_list.begin());
+
+    RouteModel::Node *pNode = open_list.front();
+
+    return pNode;
 }
 
 
