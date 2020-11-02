@@ -34,15 +34,15 @@ float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 
 void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     // populate current_node.neighbors vector using FindNeighbors() method
-    current_node.FindNeighbors();
+    current_node->FindNeighbors();
 
     for (auto *neighbor : current_node->neighbors) {
         if(neighbor->visited) continue; // do not update the neighbor if already visited
         neighbor->parent  = current_node;
         neighbor->h_value = CalculateHValue(neighbor);
-        neighbor.g_value  = current_node->g_value +
+        neighbor->g_value  = current_node->g_value +
                             current_node->distance(*neighbor);
-        neighbor.visited  = true;
+        neighbor->visited  = true;
         open_list.emplace_back(neighbor);
     }
     return;
@@ -58,8 +58,10 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 
 RouteModel::Node *RoutePlanner::NextNode() {
     // using a lambda function
-    std::sort(open_list.begin(), open_list.end(), [](const auto& list_1, const auto& list_2) {
-        return (list_1->h_value + list_1->g_value) < (list_2->h_value + list_2->g_value);
+    std::sort(open_list.begin(), open_list.end(), [](const auto& list_1,
+                                                     const auto& list_2) {
+        return  (list_1->h_value + list_1->g_value) <
+                (list_2->h_value + list_2->g_value);
     });
 }
 
