@@ -37,8 +37,18 @@ The code developed by me is below the TODOs along the `main.cpp` and `route_plan
 
   Initially the return value in the lambda function was to come from a separate function, but was decided against given that it would add more complexity, as well as the end result can be considered "cleaner".
 
-  The decisison to use the lambda function was again due to suggestion in the Knowledge forum by the mentors. The sorting `std::sort` together with the `<`symbol in the return part of the lambda function returns a `open_list` ordered in ascending `g_value + h_value`. For this, we create a pointer to the `front` of the `open_list` (the lowest value) and remove the same node with the `erase` functionality.
+  The decision to use the lambda function was again due to suggestion in the Knowledge forum by the mentors. The sorting `std::sort` together with the `<` symbol in the return part of the lambda function returns a `open_list` ordered in ascending `g_value + h_value`. From this, we create a pointer to the `front` of the `open_list` (the lowest value) and remove the same node with the `erase` functionality.
 
   - TODO 6: Complete the ConstructFinalPath method to return the final path found from your A* search.
 
+  This function goes "backwards" through a `while` loop from the `current_node` until the `node` doesn't have a parent - where it's the `start_node`.
+  The line:
+
+    path_found.insert(path_found.begin(), *(node));
+
+  **outside** the `while` loop is used to add the `start_node` to the `path_found`, which otherwise doesn't happen inside the `while` loop.
+
+  - TODO 7: Write the A* Search algorithm
+
+  This one was a simple construction of the final path by applying the `AddNeighbors` functionality to the `current_node` unless the distance to the `end_node` was zero. If it was, then the `ConstructFinalPath`function is called and applied to `m_Model.path`. The location of this instructions was figured out with the help from questions asked in the Knowledge forum.
 
