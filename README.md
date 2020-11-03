@@ -1,5 +1,9 @@
 # Route Planning Project
 
+A description of the work done by me, in each TODO for this project, can be found in the `src/README.md` file.
+
+## NOTE: Instructions below belong to the original repository from Udacity
+
 This repo contains the starter code for the Route Planning project.
 
 <img src="map.png" width="600" height="450" />
